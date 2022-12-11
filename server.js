@@ -30,3 +30,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //Connect to database
+mongoose.connect(process.env.DB_CONNECT)
+.then(() => console.log('Database connected'))
+.catch(err => console.log(err))
+
+app.get("/", (req, res) => {
+    res.render("index")
+})
+
+//Start the server
+app.listen(process.env.PORT, () => console.log("Server running"))
