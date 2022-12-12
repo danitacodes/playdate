@@ -13,10 +13,12 @@ const app = express();
 
 //EJS views, body-parser, express-static
 app.set('view engine', 'ejs')
+// app.use(express.static("public"))
+app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static("public"))
-app.use('/images', express.static(__dirname + 'public/images'))
+
+
 
 //setup session
 app.use(session({
