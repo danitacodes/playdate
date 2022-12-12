@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./views/*.{html,ejs,js', './views/partials/*.{html,ejs,js}'],
+  content: ['./views/*.{html,ejs,js,jpg', './views/partials/*.{html,ejs,js,jpg}'],
   theme: {
     colors: {
       'teal': '#00ADB5',
@@ -11,7 +11,11 @@ module.exports = {
     fontFamily: {
       sans: ['Nunito', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'home': "url('../public/images/childrenplaying.jpg')"
+      }
+    },
   },
   plugins: [],
 }
