@@ -17,13 +17,13 @@ const app = express();
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
 // app.use('/', authRoute)
-fs.readdirSync(`${__dirname}/routes`).map(filename => {
-    app.use(
-        '/',
-        require(path.join(`${__dirname}`, '/routes', `${filename}`).
-        replace('.js', ''))
-    )
-})
+// fs.readdirSync(`${__dirname}/routes`).map(filename => {
+//     app.use(
+//         '/',
+//         require(path.join(`${__dirname}`, '/routes', `${filename}`).
+//         replace('.js', ''))
+//     )
+// })
 // app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -58,6 +58,10 @@ app.get("/register", (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render("login")
+})
+
+app.get("/playfeed", (req, res) => {
+    res.render("playfeed")
 })
 
 //Start the server
