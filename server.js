@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
 const ejs = require('ejs')
-// const authRoute = require('./routes/authRoute')
+const authRoute = require('./routes/authRoute')
 
 //application setup
 const app = express();
@@ -48,21 +48,24 @@ mongoose.connect(process.env.DB_CONNECT)
 .then(() => console.log('Database connected'))
 .catch(err => console.log(err))
 
-app.get("/", (req, res) => {
-    res.render("index")
-})
+//Use routes
+app.use('/', authRoute)
 
-app.get("/register", (req, res) => {
-    res.render("register")
-})
+// app.get("/", (req, res) => {
+//     res.render("index")
+// })
 
-app.get("/login", (req, res) => {
-    res.render("login")
-})
+// app.get("/register", (req, res) => {
+//     res.render("register")
+// })
 
-app.get("/playfeed", (req, res) => {
-    res.render("playfeed")
-})
+// app.get("/login", (req, res) => {
+//     res.render("login")
+// })
+
+// app.get("/playfeed", (req, res) => {
+//     res.render("playfeed")
+// })
 
 //Start the server
 app.listen(process.env.PORT, () => console.log("Server running"))

@@ -1,5 +1,5 @@
 //require mongoose, passport-local-mongoose
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 
@@ -12,33 +12,36 @@ const userSchema = new mongoose.Schema({
 
 //Password hash middlware
 
-userSchema.pre("save", function save(next) {
-    const user = this;
-    if (!user.isModified("password")) {
-        return next();
-    }
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) {
-            return next(err);
-        }
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) {
-                return next(err);
-            }
-            user.password = hash;
-            next();
-        })
-    })
-})
+userSchema.plugin(passportLocalMongoose)
+
+
+// userSchema.pre("save", function save(next) {
+//     const user = this;
+//     if (!user.isModified("password")) {
+//         return next();
+//     }
+//     bcrypt.genSalt(10, (err, salt) => {
+//         if (err) {
+//             return next(err);
+//         }
+//         bcrypt.hash(user.password, salt, (err, hash) => {
+//             if (err) {
+//                 return next(err);
+//             }
+//             user.password = hash;
+//             next();
+//         })
+//     })
+// })
 
 //Password Validation Helper
-userSchema.methods.comparePassword = function comparePassword (
-    candidatePassword,
-    cb
-) {
-    brcypt.compare(candidatePassword, this.password, (err, isMatch) => {
-        cd(err, is Match);
-    })
-}
+// userSchema.methods.comparePassword = function comparePassword (
+//     candidatePassword,
+//     cb
+// ) {
+//     brcypt.compare(candidatePassword, this.password, (err, isMatch) => {
+//         cd(err, isMatch);
+//     })
+// }
 
 module.exports = mongoose.model("User", userSchema);
