@@ -25,7 +25,7 @@ router.post('/auth/register', async (req, res) => {
         const registerUser = await User.register({username: req.body.username}, req.body.password)
         if(registerUser){
             passport.authenticate("local")(req, res, function(){
-                res.redirect("posts")
+                res.redirect("/posts")
             })
         } else {
             res.redirect("/register")

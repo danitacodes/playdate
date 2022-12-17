@@ -8,7 +8,10 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
 const ejs = require('ejs')
+
+//require routes
 const authRoute = require('./routes/authRoute')
+const postRoute = require('./routes/posts')
 
 //application setup
 const app = express();
@@ -16,15 +19,7 @@ const app = express();
 //EJS views, body-parser, express-static
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
-// app.use('/', authRoute)
-// fs.readdirSync(`${__dirname}/routes`).map(filename => {
-//     app.use(
-//         '/',
-//         require(path.join(`${__dirname}`, '/routes', `${filename}`).
-//         replace('.js', ''))
-//     )
-// })
-// app.use('/static', express.static(path.join(__dirname, 'public')))
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -50,10 +45,11 @@ mongoose.connect(process.env.DB_CONNECT)
 
 //Use routes
 app.use('/', authRoute)
+app.use('/', postRoute)
 
-// app.get("/", (req, res) => {
-//     res.render("index")
-// })
+app.get("/", (req, res) => {
+    res.render("index")
+})
 
 // app.get("/register", (req, res) => {
 //     res.render("register")

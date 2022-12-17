@@ -1,0 +1,100 @@
+<%- include("partials/head.ejs") %> <%- include("partials/navbar.ejs") %>
+
+<div class="container min-w-full">
+  <div
+    class="md:max-w-6xl xl:w-3/5 lg:w-11/12 sm:mx-auto md-grid md-grid-cols-2 md:block py-6 w-full flex flex-col items-center gap-4 w-3/4 mx-auto md:items-start md:mt-5"
+  >
+    <div class="">
+      <h2 class="text-xl uppercase tracking-wider text-[#163530] font-bold">
+        <%= post.title %>
+      </h2>
+      <img class="img-fluid mb-5" src="<%= post.image%>" alt="" />
+      <div
+        class="w-full flex flex-col text-center m-auto bg-zinc-200 capitalize tracking-wider"
+      >
+        <div class="flex flex-row justify-around border-b-4-[#E9F1Ef] w-full">
+          <span class="form-label p-2 border flex-grow basis-0 border-white"
+            >Playdate</span
+          >
+          <span class="form-label p-2 border shrink basis-24 border-white"
+            >Friends</span
+          >
+          <span class="form-label p-2 border shrink basis-24 border-white"
+            >Grownups</span
+          >
+          <span class="form-label p-2 border shrink basis-24 border-white"
+            >Location</span
+          >
+        </div>
+        <div class="flex flex-row justify-around">
+            <span class="form-label p-2 border flex-grow basis-0 border-white"><%= posts[i].Playdate1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Friends1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Grownups1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Location1 %></span>
+        </div>
+      </div>
+    </div>
+    <div class="md:flex-col md:flex md:justify-between">
+        <div class="my-6">
+            <div class="flex flex-row justify-between">
+                <a href="/profile/<%= post.user._id%>">
+                    <span class="text-[#60DBCC] tracking-wider font-semibold mb-3"><%= post.user.username %></span>
+                </a>
+                <span class="">
+                    <% if(post.user.id === user) { %>
+                        <form
+                            action="/post/deletepost/<%= post._id%>?_method=DELETE"
+                            method="POST"
+                            class="inline"
+                        >
+                            <button class="" type="submit">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                    </form>
+                    <% } %>
+                </span>
+            </div>
+
+            <p><%= post.caption %></p>
+        </div>
+
+        <div class="justify-self-end">
+            <ul class="block list-unstyled my-3">
+                <% for(var i=0; i<comments.length; i++) {%>
+                    <li class="block my-3">
+                        <span class="tracking-wider font-bold"><%= comments[i].user.username%></span>
+                        <span><%= comments[i].comment%></span>
+                        <span class="tracking-wider text-gray-400 block text-right text-sm pt-1"><%= comments[i].createdAt.toLocaleString("en-US") %></span>
+                    </li>    
+               <% } %>
+            </ul>
+            <div class="block mt-5">
+                <p class="">
+                    <form 
+                        method="POST"
+                        action="/post/likepost/<%= post._id%>?_method=PUT"
+                        class="inline"
+                        >
+                        <button class="" type="submit">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </form>
+
+                    <%= post.likes %>
+                </p>
+            </div>
+            <form action="/comment/createComment/<%=post._id%>"
+                method="POST">
+                <div class="mb-6">
+                    <div class="grid grid-cols-5 gap-2 mt-2">
+                        <input type="text" class="col-span-4 bg-transparent form-control block w-full mx-auto text-center border-[#60DBCC] border-2" id="comment" name="comment" >
+                        <button type="submit" class="px-1 uppercase border-2 border-[#163530] rounded-md tracking-wider bg-[#163530] text-white">POST</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
