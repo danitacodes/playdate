@@ -1,4 +1,5 @@
-<%- include("partials/head.ejs") %> <%- include("partials/navbar.ejs") %>
+<%- include("partials/head.ejs") %> 
+<%- include("partials/navbar.ejs") %>
 
 <div class="container min-w-full">
   <div
@@ -27,10 +28,10 @@
           >
         </div>
         <div class="flex flex-row justify-around">
-            <span class="form-label p-2 border flex-grow basis-0 border-white"><%= posts[i].Playdate1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Friends1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Grownups1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].Location1 %></span>
+            <span class="form-label p-2 border flex-grow basis-0 border-white"><%= post[i].Playdate1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Friends1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Grownups1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Location1 %></span>
         </div>
       </div>
     </div>
@@ -43,7 +44,7 @@
                 <span class="">
                     <% if(post.user.id === user) { %>
                         <form
-                            action="/post/deletepost/<%= post._id%>?_method=DELETE"
+                            action="/post/deletePost/<%= post._id%>?_method=DELETE"
                             method="POST"
                             class="inline"
                         >

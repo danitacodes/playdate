@@ -10,7 +10,7 @@ const passport = require('passport')
 const ejs = require('ejs')
 
 //require routes
-const authRoute = require('./routes/authRoute')
+const authRoute = require('./routes/auth')
 const postRoute = require('./routes/posts')
 
 //application setup
