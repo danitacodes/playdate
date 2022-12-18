@@ -1,25 +1,29 @@
 //require the packages
-require('dotenv').config()
 const express = require('express')
-const path = require('path')
-const fs = require('fs')
-// const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const session = require('express-session')
-const passport = require('passport')
-const MongoStore = require('connect-mongo')(session)
-const flash = require("express-flash")
-const logger = require('morgan')
 const methodOverride = require('method-override')
-const ejs = require('ejs')
+const mongoose = require('mongoose')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const flash = require('express-flash')
+const logger = require('morgan')
+const connectDB = require('./config/database')
 
 //require routes
 const mainRoutes = require('./routes/main')
 const postRoute = require('./routes/posts')
-const connectDB = require('./config/database')
 
 //application setup
 const app = express();
+
+//Env file
+require('dotenv').config()
+
+//Connect to database
+connectDB();
+
+//Passport config
+require('./config/passport')(passport)
 
 //EJS views, body-parser, express-static
 app.set('view engine', 'ejs')
@@ -48,8 +52,7 @@ app.use(passport.session())
 //Forms for put/delete
 app.use(methodOverride('_method'))
 
-//Connect to database
-connectDB();
+
 // mongoose.connect(process.env.DB_CONNECT)
 // .then(() => console.log('Database connected'))
 // .catch(err => console.log(err))

@@ -9,6 +9,12 @@
     >
       <i class="fa-solid fa-children text-5xl"></i>
       <sub class="text-4xl mb-16">Playdate Chronicles</sub>
+      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger text-red-700"><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div class="alert alert-info text-red-700"><%= el.msg %></div>
+        <% }) %> <% } %>
       <form
         action="/auth/login"
         method="POST"
@@ -49,7 +55,7 @@
         </button>
       </form>
       <a
-        href="/auth/register"
+        href="/register"
         class="p-3 px-4 rounded-md bg-white self-center tracking-wider mr-2"
         >Sign up</a
       >

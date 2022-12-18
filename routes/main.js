@@ -13,5 +13,8 @@ router.get('/logout', authController.logout)
 router.get('/login', authController.getLogin)
 router.post('/login', authController.postLogin)
 
+//Playfeed
+// router.get('/playfeed', ensureAuth, postsController.getFeed)
+
 
 module.exports = router

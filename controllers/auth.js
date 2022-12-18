@@ -16,7 +16,7 @@ exports.getRegister = (req, res) => {
 
 exports.postRegister = (req, res, next) => {
   const validationErrors = [];
-  if (!validator.isEmail(req.body.username))
+  if (!validator.isEmail(req.body.email))
     validationErrors.push({ msg: "Please enter a valid email address" });
   if (!validator.isLength(req.body.password, { min: 8 }))
     validationErrors.push({
@@ -35,11 +35,12 @@ exports.postRegister = (req, res, next) => {
 
   const user = new User({
     username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
 
   User.findOne(
-    { $or: [{ email: req.body.username }, { userName: req.body.username }] },
+    { $or: [{ email: req.body.email }, { username: req.body.username }] },
     (err, existingUser) => {
       if (err) {
         return next(err);
