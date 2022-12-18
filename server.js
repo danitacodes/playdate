@@ -7,10 +7,12 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
+const flash = require("express-flash")
+const methodOverride = require('method-override')
 const ejs = require('ejs')
 
 //require routes
-const authRoute = require('./routes/auth')
+const mainRoutes = require('./routes/main')
 const postRoute = require('./routes/posts')
 
 //application setup
@@ -38,18 +40,22 @@ app.use(passport.initialize())
 //use passport to deal with session
 app.use(passport.session())
 
+//Forms for put/delete
+app.use(methodOverride('_method'))
+
 //Connect to database
 mongoose.connect(process.env.DB_CONNECT)
 .then(() => console.log('Database connected'))
 .catch(err => console.log(err))
 
-//Use routes
-app.use('/', authRoute)
-app.use('/', postRoute)
+//flash messages
+app.use(flash())
 
-app.get("/", (req, res) => {
-    res.render("index")
-})
+//Use routes
+
+app.use('/', mainRoutes)
+
+
 
 // app.get("/register", (req, res) => {
 //     res.render("register")

@@ -10,16 +10,29 @@
       <i class="fa-solid fa-children text-5xl"></i>
       <sub class="text-4xl mb-16">Playdate Chronicles</sub>
       <form
-        action="/auth/register"
+        action="/register"
         method="POST"
         class="w-full text-center m-auto mb-8"
       >
+      <div class="mb-5">
+        <input
+          type="text"
+          class="form-control bg-transparent block w-full mx-auto text-center border-b border-[#163530] cursor-pointer"
+          id="userName"
+          name="userName"
+        />
+        <label
+          for="userName"
+          class="form-label block py-1.5 w-full text-left"
+          >Username</label
+        >
+      </div>
         <div class="mb-5">
           <input
             type="email"
             class="form-control bg-transparent block w-full mx-auto text-center border-b border-[#333] cursor-pointer"
             id="exampleInputEmail1"
-            name="username" aria-describedby="emailHelp"
+            name="email" aria-describedby="emailHelp"
           />
           <label
             for="exampleInputEmail1"
@@ -62,7 +75,7 @@
         </button>
       </form>
       <a
-        href="/auth/login"
+        href="/login"
         class="p-3 px-4 rounded-md bg-white self-center tracking-wider mr-2"
         >Login</a
       >
@@ -71,18 +84,7 @@
       ></a>
     </div>
   </div>
-  <!-- <form action="/auth/login" method="post">
-        <h3 class="mb-4">Login</h3>
-        <div class="mb-3">
-            <label for="login-emai" class="form-label">Email address</label>
-            <input type="email" name="username" class="form-control" id="login-email" aria-describedby="emailHelp" required>
-        </div>
-        <div class="mb-3">
-            <label for="login-password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="login-password" required minlength="6">
-        </div>
-        <button type="submit" class="btn purple__btn">Submit</button>
-    </form> -->
+
 </div>
 
 <%- include("partials/footer.ejs") %>
