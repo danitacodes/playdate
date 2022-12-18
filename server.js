@@ -7,13 +7,16 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
+const MongoStore = require('connect-mongo')(session)
 const flash = require("express-flash")
+const logger = require('morgan')
 const methodOverride = require('method-override')
 const ejs = require('ejs')
 
 //require routes
 const mainRoutes = require('./routes/main')
 const postRoute = require('./routes/posts')
+const connectDB = require('./config/database')
 
 //application setup
 const app = express();
@@ -25,13 +28,15 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
+//Logging
+app.use(logger('dev'))
 
 //setup session
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }))
 
 //Passport Initialization
@@ -44,9 +49,10 @@ app.use(passport.session())
 app.use(methodOverride('_method'))
 
 //Connect to database
-mongoose.connect(process.env.DB_CONNECT)
-.then(() => console.log('Database connected'))
-.catch(err => console.log(err))
+connectDB();
+// mongoose.connect(process.env.DB_CONNECT)
+// .then(() => console.log('Database connected'))
+// .catch(err => console.log(err))
 
 //flash messages
 app.use(flash())

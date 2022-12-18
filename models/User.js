@@ -4,18 +4,15 @@ const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 
 //User Schema
-const UserSchema = new mongoose.Schema({
-    userName: { type: String, unique: true },
-    email: { type: String, unique: true },
+const userSchema = new mongoose.Schema({
+    username: String,
     password: String
 });
 
-//Password hash middlware
+//Password hash using passport-local
+userSchema.plugin(passportLocalMongoose)
 
-UserSchema.plugin(passportLocalMongoose)
-
-
-// userSchema.pre("save", function save(next) {
+// UserSchema.pre("save", function save(next) {
 //     const user = this;
 //     if (!user.isModified("password")) {
 //         return next();
@@ -35,7 +32,7 @@ UserSchema.plugin(passportLocalMongoose)
 // })
 
 //Password Validation Helper
-// userSchema.methods.comparePassword = function comparePassword (
+// UserSchema.methods.comparePassword = function comparePassword (
 //     candidatePassword,
 //     cb
 // ) {
@@ -44,4 +41,4 @@ UserSchema.plugin(passportLocalMongoose)
 //     })
 // }
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", userSchema);
