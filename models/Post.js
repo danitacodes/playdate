@@ -11,6 +11,7 @@ const PostSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        require: true,
     },
     cloudinaryId: {
         type: String,
@@ -18,6 +19,7 @@ const PostSchema = new mongoose.Schema({
     },
     caption: {
         type: String,
+        required: true,
     },
     likes: {
         type: Number,
@@ -31,14 +33,17 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    friends1: {
+    friends: {
         type: String,
+        required: true,
     },
-    grownups1: {
+    grownups: {
         type: String,
+        required: true,
     },
-    location1: {
-        type: String
+    location: {
+        type: String,
+        required: true,
     }
 })
 
