@@ -5,21 +5,22 @@
     <div class="mt-5 w-full justify-center flex">
         <div class="mt-5 max-w-md">
             <div class="m-auto">
-                <h2 class="text-2xl text-center uppercase text-[#16350] tracking-wider font-semibold pb-3">Add Playdate</h2>
+                <h2 class="text-2xl text-center uppercase text-[#333] tracking-wider font-semibold pb-3">Add Playdate</h2>
                 <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="w-full flex flex-col text-center m-auto mb-8 bg-gray-200 uppercase tracking-wider">
+                    
                     <div class="flex flex-row justify-around bg-gray-200 border-b-4 border-[#E91F1EF] w-full">
                         <label for="playdate" class="form-label p-2 border flex-grow basis-0 border-white">Playdate</label>
                         <label for="friends" class="form-label p-2 border shrink basis-24 border-white">Friends</label>
                         <label for="grownups" class="form-label p-2 border shrink basis-24 border-white">Grownups</label>
                         <label for="location" class="form-label p-2 border shrink basis-24 border-white">Location</label>
-
-                        <div class="flex flex-row justify-around">
+                    </div>
+                    <div class="flex flex-row justify-around">
                             <input type="text" class="bg-transparent form-control text-center min-w-0 flex-grow basis-0 border-white p-2" id="playdate" name="playdate">
                             <input type="text" class="bg-transparent form-control text-center border min-0 shrink basis-24 border-white p-2" id="friends" name="friends">
                             <input type="text" class="bg-transparent form-control text-center border min-0 shrink basis-24 border-white p-2" id="grownups" name="grownups">
                             <input type="text" class="bg-transparent form-control text-center border min-0 shrink basis-24 border-white p-2" id="location" name="location">
-                        </div>
                     </div>
+                </div>
 
                     <div class="text-left m-auto mb-8 uppercase tracking-wider">
                         <label for="title" class="form-label p-2 flex-grow basis-0 border-white">PlayDate Name:</label>
@@ -39,9 +40,9 @@
                     </div>
                   <div class="text-center m-auto mb-8">
                     <button type="submit" class="px-4 p-3 uppercase border-2 border-[#163530] rounded-md tracking-wider bg-[#163530] text-white" value="Upload">Submit</button>
-                  </div>
-                    
+                  </div> 
                 </form>
+                </div>
             </div>
         </div>
     </div>

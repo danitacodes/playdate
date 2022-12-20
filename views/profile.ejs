@@ -5,29 +5,52 @@
     <div class="mt-5 max-w-lg lg:max-w-3xl w-full mx-auto">
         <div class="md:flex md:justify-between">
             <div class="md:text-left my-8 text-center flex flex-col justify-between">
-                <p class="text-[#163530] tracking-wider font-semibold my-3 text-xl">
-                    <span class="py-1 text-2xl"><%= publicUser.username %></span>
+                <p class="text-[#333] tracking-wider font-semibold my-3 text-xl">
+                    Welcome Back <%= user.username %>
                 </p>
             </div>
-            <div class="md:my-8 md:text-right md:py-1">
-                <% if(publicUser === user) { %>
-                    <p class="my-3 text-sm text-gray-500"><%= user.email %></p>
-                <% } %>
-                <div>
-                    <% if(publicUser === user){ %>
-                    <a href="/logout" class="px-2 p-1 my-3 uppercase border border-[#163530] text-[#163530] text-sm">Logout</a>
-                </div>
+            <div class="mt-5">
+                <h2>Add Playdate</h2>
+                <form class="w-full max-w-lg" action="/post/createPost" enctype="multipart/form-data" method="POST">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Playdate Name</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="friends" class="form-label">Which Friends?</label>
+                            <input type="text" class="form-control" id="friends" name="friends">
+                        </div>
+                        <div class="mb-3">
+                            <label for="grownups" class="form-label">Which Grownups?</label>
+                            <input type="text" class="form-control" id="grownups" name="grownups">
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Playdate Location</label>
+                            <input type="text" class="form-control" id="location" name="location">
+                        </div>
+                        <div class="mb-3">
+                            <label for="caption" class="form-label">Playdate Notes</label>
+                            <textarea class="form-control" id="caption" name="caption"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imgUpload" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="imageUpload" name="file">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="px-4 p-3 uppercase border-2 border-[#163530] rounded-md tracking-wider bg-[#163530] text-white" value="Upload">Submit</button>
+                </form>
             </div>
         </div>
-        <span class="mx-auto text-center mt-5 block w-32"></span>
         <div class="mt-5 w-full mx-auto">
             <ul class="flex w-full flex-col my-10 lg:grid lg:grid-cols-3 lg:gap-4">
                 <% for(var i=0; i<posts.length; i++) {%>
-                <li class="my-3">
-                    <a href="/post/<%= posts[i]._id%>">
-                        <img class="img-fluid h-full" src="<%= posts[i].image%>">
-                    </a>
-                </li>    
+                    <li class="my-3">
+                        <a href="/post/<%= posts[i]._id%>">
+                            <img class="img-fluid h-full" src="<%= posts[i].image%>">
+                        </a>
+                    </li>
                 <% } %>
             </ul>
         </div>

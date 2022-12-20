@@ -1,42 +1,85 @@
 <%- include('partials/head.ejs') %>
-<%- include('partials/navbar.ejs') %>
 
-<div class="container min-w-full">
-    <div class="mt-5 max-w-lg mx-auto">
-        <p>Welcome <%= user.username %></p>
-        <ul class="list-unstyled mt-5">
-            <% for(var i=0; i<posts.length; i++) {%>
-                <li class="my-10">
-                    <a href="/post/<%= posts[i]._id%>">
-                        <img class="img-fluid" src="<%= posts[i].image%>">
-                        <div class="flex justify-between w-full py-3 flex-row">
-                            <span class="text-xl uppercase tracking-wider text-[#163530] font-bold"><%= posts[i].title %></span>
-                            <span class="tracking-wider text-sm text-gray-400"><%= posts[i].createdAt.toLocaleString("en-US") %></span>
-                        </div>
-                    </a>
-
-                    <div class="w-full flex flex-col text-center m-auto bg-zinc-200 capitalize tracking-wider">
-                        <div class="flex flex-row justify-around bg-zinc-200 border-b-4 border-[#e9F1EF] w-full">
-                            <span class="form-label p-2 border flex-grow basis-0 border-white">Playdate</span>
-                            <span class="form-label p-2 border shrink basis-24 border-white">Friends</span>
-                            <span class="form-label p-2 border shrink basis-24 border-white">Grownups</span>
-                            <span class="form-label p-2 border shrink basis-24 border-white">Location</span>
-                        </div>
-                        <div class="flex flex-row justify-around">
-                            <span class="form-label p-2 border flex-grow basis-0 border-white"><%= posts[i].playdate %></span>
-                            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].friends %></span>
-                            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].grownups %></span>
-                            <span class="form-label p-2 border shrink basis-24 border-white"><%= posts[i].location %></span>
+<div>
+  <body class="bg-[#735d78]">
+    <div class="flex mt-10 max-w-4xl mx-auto gap-6">
+      <div class="w-1/4">
+        <!-- Left Side -->
+        <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
+          <h2 class="text-[#333] text-center text-3xl font-semibold mb-3">
+            Navigation
+          </h2>
+          <a class="flex gap-3 py-3 text-xl" href="/">Home</a>
+          <a class="flex gap-3 py-3 text-xl" href="profile">Profile</a>
+          <a class="flex gap-3 py-3 text-xl" href="friends">Friends</a>
+          <a class="flex gap-3 py-3 text-xl" href="logout">Logout</a>
+        </div>
+      </div>
+      <!--Right Side-->
+      
+        <div class="w-3/4">
+            <!-- New PlayDate Post-->
+            <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
+                <div class="flex gap-2">
+                    <div>
+                        <div class="w-12 rounded-full overflow-hidden">
+                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
                         </div>
                     </div>
-                    <a href="/userProfile/<%= posts[i].user._id%>">
-                        <p class="text-[#60DBCC] tracking-wider font-semibold py-3">@<%= posts[i].user.username %></p>
-                    </a>
-                    <p><%= posts[i].caption %></p>
-                </li>
-            <% } %>
-        </ul>
+                    <textarea class="grow p-3 h-14" placeholder="Enter your playdate information here."></textarea>
+                </div>
+                <div class="flex items-center">
+                    <div class="grow text-right mt-3">
+                        <button class="bg-[#22A39F] text-white px-6 py-1 rounded-md">Share</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Feed-->
+            <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
+                <div class="flex gap-3">
+                    <div>
+                        <div class="w-12 rounded-full overflow-hidden">
+                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <a class="font-semibold" href="">Lupita</a> shared a <a class="text-[#00ADB5] font-semibold" href="">playdate</a></p>
+                        <p class="text-sm text-[#333]">1 hour ago</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="my-3 text-lg">Kamryn and Khloe hung out with their friends Prince and Sonora today</p>
+                    <div class="rounded-md overflow-hidden">
+                        <img src="https://images.pexels.com/photos/4430308/pexels-photo-4430308.jpeg?auto=compress&cs=tinysrgb&w=600" alt="kids in playground">
+                    </div>
+                </div>
+                <div class="mt-5 flex gap-8">
+                    <button class="flex gap-2 items-center">
+                        <i class="fa-regular fa-heart"></i>
+                        20
+                    </button>
+                    <button class="flex gap-2 items-center">
+                        <i class="fa-regular fa-message"></i>
+                        4
+                    </button>
+                </div>
+                <div class="flex mt-4 gap-3">
+                    <div>
+                        <div class="w-12 rounded-full overflow-hidden">
+                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
+                        </div>
+                    </div>
+                    <textarea class="border grow p-2 h-12 rounded-md" placeholder="Comments"></textarea>
+                </div>
+                
+            </div>
+        </div>
+      
+
     </div>
+  </body>
 </div>
 
 <%- include('partials/footer.ejs') %>
