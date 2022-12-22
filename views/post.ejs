@@ -3,7 +3,7 @@
 
 <div class="container min-w-full">
   <div
-    class="md:max-w-6xl xl:w-3/5 lg:w-11/12 sm:mx-auto md-grid md-grid-cols-2 md:block py-6 w-full flex flex-col items-center gap-4 w-3/4 mx-auto md:items-start md:mt-5"
+    class="md:max-w-6xl xl:w-3/5 lg:w-11/12 sm:mx-auto md-grid md-grid-cols-2 md:block py-6 flex flex-col items-center gap-4 w-3/4 mx-auto md:items-start md:mt-5"
   >
     <div class="">
       <h2 class="text-xl uppercase tracking-wider text-[#163530] font-bold">
@@ -14,10 +14,7 @@
         class="w-full flex flex-col text-center m-auto bg-zinc-200 capitalize tracking-wider"
       >
         <div class="flex flex-row justify-around border-b-4-[#E9F1Ef] w-full">
-          <span class="form-label p-2 border flex-grow basis-0 border-white"
-            >Playdate</span
-          >
-          <span class="form-label p-2 border shrink basis-24 border-white"
+              <span class="form-label p-2 border shrink basis-24 border-white"
             >Friends</span
           >
           <span class="form-label p-2 border shrink basis-24 border-white"
@@ -28,10 +25,9 @@
           >
         </div>
         <div class="flex flex-row justify-around">
-            <span class="form-label p-2 border flex-grow basis-0 border-white"><%= post[i].Playdate1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Friends1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Grownups1 %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].Location1 %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].friends %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].grownups %></span>
+            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].location %></span>
         </div>
       </div>
     </div>

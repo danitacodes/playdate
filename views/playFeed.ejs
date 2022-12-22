@@ -2,10 +2,10 @@
 
 <div>
   <body class="bg-[#735d78]">
-    <div class="flex mt-10 max-w-4xl mx-auto gap-6">
-      <div class="w-1/4">
+    <div class="md:flex mt-10 max-w-4xl mx-auto gap-6">
+      <div class="md:w-1/4 md:p-4 mx-4">
         <!-- Left Side -->
-        <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
+        <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
           <h2 class="text-[#333] text-center text-3xl font-semibold mb-3">
             Navigation
           </h2>
@@ -17,64 +17,77 @@
       </div>
       <!--Right Side-->
       
-        <div class="w-3/4">
-            <!-- New PlayDate Post-->
-            <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
-                <div class="flex gap-2">
-                    <div>
-                        <div class="w-12 rounded-full overflow-hidden">
-                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
-                        </div>
-                    </div>
-                    <textarea class="grow p-3 h-14" placeholder="Enter your playdate information here."></textarea>
-                </div>
-                <div class="flex items-center">
-                    <div class="grow text-right mt-3">
-                        <button class="bg-[#22A39F] text-white px-6 py-1 rounded-md">Share</button>
-                    </div>
-                </div>
-            </div>
+        <div class="container">
+            <div class="mt-5 max-w-lg mx-auto">
+                <ul class="list-unstyled mt-5">
+                    <% for(var i=0; i<posts.length; i++) {%>
+                       <li class="my-10">
+                        <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
+                            <a href="/post/<%= posts[i]._id %>">
+                                <p class="text-lg">
+                                    <a class="font-semibold hover:underline cursor-pointer text-[#333]" href="/userProfile/<%= posts[i].user._id %>"><%= posts[i].user.username %></a> shared a <a class="text-[#005458]  font-semibold" href="/post/<%= posts[i]._id %>">playdate</a>
+                                </p>
+                                <div>
+                                    <p class="my-3 text-lg">
+                                        <%= posts[i].caption %>
+                                    </p>
+                                    <div class="rounded-md overflow-hidden">
+                                        <img class="img-fluid" src="<%= posts[i].image %>" alt="user picture">
+                                    </div>
+                                </div>
+                                <div class="overflow-x-auto relative pt-2">
+                                    <table class="w-full text-sm text-left">
+                                        <thead class="text-sm">
+                                            <tr class="text-[#005458]">
+                                                <th scope="col" class="px-2">Location</th>
+                                                <th scope="col" class="px-2">Friends</th>
+                                                <th scope="col" class="px-2">Other Grownups</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="px-2"><%= posts[i].location %></td>
+                                                <td class="px-2"><%= posts[i].friends %></td>
+                                                <td class="px-2"><%= posts[i].grownups %></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-3 flex gap-8">
+                                    <form  class="col-1" method="POST" action="/post/likePost/<%= posts[i]._id %>?_method=PUT">
+                                        <button  type="submit" class="flex gap-2 items-center">
+                                            <i class="fa-regular fa-heart"></i>
+                                            <%= posts[i].likes %>
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="/comment/createComment/<%= posts[i]._id%>">
+                                        <div class="flex mt-4 gap-3">
+                                            <div>
+                                                <div class="w-12 rounded-full overflow-hidden">
+                                                    <img src='<%= posts[i].username%>' alt="avatar">
+                                                </div>
+                                            </div>
+                                            <textarea class="border grow p-3 px-4 overflow-hidden h-12 rounded-md" placeholder="Comments"></textarea>
+                                        </div>
 
-            <!--Feed-->
-            <div class="bg-[#d1b3c4] shadow-md rounded-md p-4 mb-5">
-                <div class="flex gap-3">
-                    <div>
-                        <div class="w-12 rounded-full overflow-hidden">
-                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
-                        </div>
-                    </div>
-                    <div>
-                        <p>
-                            <a class="font-semibold" href="">Lupita</a> shared a <a class="text-[#00ADB5] font-semibold" href="">playdate</a></p>
-                        <p class="text-sm text-[#333]">1 hour ago</p>
-                    </div>
-                </div>
-                <div>
-                    <p class="my-3 text-lg">Kamryn and Khloe hung out with their friends Prince and Sonora today</p>
-                    <div class="rounded-md overflow-hidden">
-                        <img src="https://images.pexels.com/photos/4430308/pexels-photo-4430308.jpeg?auto=compress&cs=tinysrgb&w=600" alt="kids in playground">
-                    </div>
-                </div>
-                <div class="mt-5 flex gap-8">
-                    <button class="flex gap-2 items-center">
-                        <i class="fa-regular fa-heart"></i>
-                        20
-                    </button>
-                    <button class="flex gap-2 items-center">
-                        <i class="fa-regular fa-message"></i>
-                        4
-                    </button>
-                </div>
-                <div class="flex mt-4 gap-3">
-                    <div>
-                        <div class="w-12 rounded-full overflow-hidden">
-                            <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
-                        </div>
-                    </div>
-                    <textarea class="border grow p-2 h-12 rounded-md" placeholder="Comments"></textarea>
-                </div>
+                                        <button type="submit" class="flex gap-2 items-center">
+                                            <i class="fa-regular fa-message"></i>
+                                            <%= posts[i].comment %>
+
+                                        </button>
+                                    </form>
+                                    
+                                </div>
+                                
                 
+                            </a>
+                            
+                        </div>
+                       </li> 
+                  <%  } %>
+                </ul>
             </div>
+            
         </div>
       
 

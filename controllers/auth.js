@@ -14,6 +14,15 @@ exports.getRegister = (req, res) => {
   });
 };
 
+exports.getFriends = (req, res) => {
+  if(req.user) {
+    return res.redirect("/friends")
+  }
+  res.render("login", {
+    title: "Login"
+  })
+}
+
 exports.postRegister = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
