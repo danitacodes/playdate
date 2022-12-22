@@ -22,7 +22,7 @@ module.exports = function (passport) {
                         return done(err)
                     }
                     if (isMatch) {
-                        return done(null, userr)
+                        return done(null, user)
                     }
                     return done(null, false, { msg: "Invalid email or password." })
                 })

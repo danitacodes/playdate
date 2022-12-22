@@ -7,7 +7,7 @@ const User = require("../models/User");
 
 exports.getRegister = (req, res) => {
   if (req.user) {
-    return res.redirect("/playfeed");
+    return res.redirect("/profile");
   }
   res.render("register", {
     title: "Create Account",
@@ -38,7 +38,7 @@ exports.postRegister = (req, res, next) => {
     req.flash("errors", validationErrors);
     return res.redirect("register");
   }
-  req.body.email = validator.normalizeEmail(req.body.username, {
+  req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
   });
 
@@ -58,7 +58,7 @@ exports.postRegister = (req, res, next) => {
         req.flash("errors", {
           msg: "Account with that email address or username already exists.",
         });
-        return res.redirect("register");
+        return res.redirect("../register");
       }
       user.save((err) => {
         if (err) {
@@ -68,7 +68,7 @@ exports.postRegister = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/playfeed");
+          res.redirect("/profile");
         });
       });
     }
@@ -77,7 +77,7 @@ exports.postRegister = (req, res, next) => {
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect("/playfeed");
+    return res.redirect("/profile");
   }
   res.render("login", {
     title: "Login",
@@ -112,7 +112,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "You are logged in." });
-      res.redirect(req.session.returnTo || "/playfeed");
+      res.redirect(req.session.returnTo || "/profile");
     });
   })(req, res, next);
 };

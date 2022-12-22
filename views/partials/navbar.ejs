@@ -1,18 +1,24 @@
 <!--Navbar-->
 <body class="relative flex flex-wrap">
-  <header class="container bg-[#735d78] min-w-full flex text-[#2C3333]">
-    <nav
-      class="md:max-w-6xl xl:w-3/5 lg-w-3/4 md:w-11/12 sm:mx-auto md:flex-row md:justify-between py-6 w-full flex flex-col items-center"
-    >
-      <a href="/" class="flex w-1/5 flex-none sm:mb-5"><i class="fa-solid fa-children text-8xl text-[#d1b3c4]"></i>
-        <sub class="text-[#d1b3c4] text-5xl mb-4">Playdate Chronicles</sub></a>
-        <ul class="flex-initial flex md:gap-4 md:flex-nowrap md:flex-row md:2-2/4 uppercase md:justify-end self-center tracking-wider flex-wrap flex-col text-center">
-          <li class="p-1.5 px-3 text-white"><a href="/">Home</a></li>
-          <li class="p-1.5 px-3 text-white"><a href="/profile">Profile</a></li>
-          <li class="p-1.5 px-3 rounded-md bg-[#22A39F] text-white"><a href="newPlaydate">New Playdate</a></li>
-          <li class="p-1.5 px-3 rounded-md bg-[#CE7777] text-white"><a href="logout">Logout</a></li>
-        </ul>
-    </nav>
-  </header>
+  <nav class="bg-[#735d78]">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex justify-between items-center">
+          <a href="/" class="flex items-center py-3 px-3">
+            <i class="fa-solid fa-children text-4xl mr-1 text-[#ebdee5]"></i>
+        <sub class="text-[#ebdee5] text-3xl mb-4">Playdate Chronicles</sub>
+          </a>
+          <div class="px-4 cursor-pointer md:hidden">
+            <i class="fa-solid fa-bars text-4xl text-[#ebdee5]"></i>
+          </div>
+        </div>
+        
+      <div class="hidden md:flex items-center text-[#ebdee5] space-x-1 text-lg">
+        <a href="/playfeed" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Playfeed</a>
+        <a href="/friends" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Friends</a>
+        <a href="/logout" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Logout</a>
+      </div>
 
-</body>
+      </div>
+    </div>
+  </nav>

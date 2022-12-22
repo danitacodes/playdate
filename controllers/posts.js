@@ -75,7 +75,7 @@ module.exports = {
       } catch (err) {
         res.redirect("/profile");
       }
-    },
+    },  
     getPosts: async (req, res) => {
       try {
         const posts = await Post.find().then(posts=> {res.json({posts})})

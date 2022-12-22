@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const PostSchema = new mongoose.Schema({
     image: {
         type: String,
-        require: true,
+        default: "No Photo",
     },
     cloudinaryId: {
         type: String,

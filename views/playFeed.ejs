@@ -3,18 +3,7 @@
 <div>
   <body class="bg-[#735d78]">
     <div class="md:flex mt-10 max-w-4xl mx-auto gap-6">
-      <div class="md:w-1/4 md:p-4 mx-4">
-        <!-- Left Side -->
-        <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
-          <h2 class="text-[#333] text-center text-3xl font-semibold mb-3">
-            Navigation
-          </h2>
-          <a class="flex gap-3 py-3 text-xl" href="/">Home</a>
-          <a class="flex gap-3 py-3 text-xl" href="profile">Profile</a>
-          <a class="flex gap-3 py-3 text-xl" href="friends">Friends</a>
-          <a class="flex gap-3 py-3 text-xl" href="logout">Logout</a>
-        </div>
-      </div>
+      <%- include('partials/navbar.ejs') %>
       <!--Right Side-->
       
         <div class="container">
@@ -24,8 +13,8 @@
                        <li class="my-10">
                         <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
                             <a href="/post/<%= posts[i]._id %>">
-                                <p class="text-lg">
-                                    <a class="font-semibold hover:underline cursor-pointer text-[#333]" href="/userProfile/<%= posts[i].user._id %>"><%= posts[i].user.username %></a> shared a <a class="text-[#005458]  font-semibold" href="/post/<%= posts[i]._id %>">playdate</a>
+                                <p>
+                                    <a class="font-semibold hover:underline cursor-pointer text-[#333] text-lg" href="/userProfile/<%= posts[i].user._id %>"><%= posts[i].username %></a> shared a <a class="text-[#005458] font-semibold">playdate</a>
                                 </p>
                                 <div>
                                     <p class="my-3 text-lg">

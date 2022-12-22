@@ -3,29 +3,36 @@
 <!--Home-->
 <div class="min-h-screen py-40 bg-[#735d78]">
   <div class="container mx-auto">
-    <div class="flex w-8/12 bg-[#ebdee5] rounded-xl mx-auto shadow-lg overflow-hidden">
+    <div
+      class="flex w-8/12 bg-[#ebdee5] rounded-xl mx-auto shadow-lg overflow-hidden"
+    >
       <div class="w-1/2">
-        <img src="img/kidsplaying.jpg" alt="">
+        <img src="img/kidsplaying.jpg" alt="" />
       </div>
       <div class="w-1/2 py-16 px-12">
-        <h2 class="text-3xl mb-8 text-center font-bold">Playdate Chronicles</h2>   
+        <h2 class="text-3xl mb-8 text-center font-bold">Playdate Chronicles</h2>
         <form action="#">
-          <div class="grid gap-5">
-            <input type="text" placeholder="Username" class="border border-gray-400 py-1 px-2">
-            <input type="password" placeholder="Password" class="border border-gray-400 py-1 px-2">
+          <div class="mt-20">
+            <p class="text-center font-bold text-2xl">Already Have Account?</p>
           </div>
           <div class="mt-5">
-            <button class="bg-[#1b8481] w-full py-3 text-center text-white"><a href="/playfeed">Log In</a></button>
+            <button class="bg-[#1b8481] w-full py-3 text-center text-white">
+              <a href="/login">Log In</a>
+            </button>
           </div>
           <div class="mt-20">
-           <p class="text-center font-bold text-2xl">New User?</p>
+            <p class="text-center font-bold text-2xl">New User?</p>
           </div>
           <div class="mt-5">
-            <button class="bg-[#C15454] w-full py-3 text-center text-white"><a href="/register">Sign up now</a></button>
+            <button class="bg-[#C15454] w-full py-3 text-center text-white">
+              <a href="/register">Sign up now</a>
+            </button>
           </div>
-        </form>  
+        </form>
       </div>
     </div>
   </div>
 </div>
+
+
 <%- include("partials/footer.ejs") %>
