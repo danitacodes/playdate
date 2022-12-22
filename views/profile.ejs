@@ -10,15 +10,15 @@
         <!-- Cover Photo -->
         <div class="bg-[#ebdee5] shadow-md rounded-md mb-5 overflow-hidden">
           <div class="relative">
-            <div class="h-36 overflow-hidden flex justify-center items-center">
+            <div class="h-36 overflow-hidden flex justify-center items-center bg-cover">
               <img
                 src="https://images.unsplash.com/photo-1471922694854-ff1b63b20054?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhY2h8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
                 alt="beach photo"
               />
             </div>
             <!--Avatar-->
-            <div class="absolute top-12 left-4">
-              <div class="sm:w-36 w-24 rounded-full overflow-hidden">
+            <div class="absolute top-16 left-2">
+              <div class="w-24 md:w-36 w-24 rounded-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60"
                   alt="avatar"
@@ -26,7 +26,7 @@
               </div>
             </div>
             <div class="p-4 pb-4">
-              <div class="ml-24 sm:ml-40">
+              <div class="ml-24 md:ml-40">
                 <h1 class="text-3xl font-bold"><%= user.username %></h1>
                 <div class="text-[#005458] font-bold leading-4">
                   Burbank, CA
@@ -37,16 +37,13 @@
         </div>
 
         <!--Create Posts-->
-        <div class="lg:w-3/4 mx-1">
+        <div class="">
             <!-- New PlayDate Post-->
             <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
-                <div>
+                <div class="flex flex-col justify-center items-center">
                     <form class="w-full max-w-lg" action="/post/createPost" enctype="multipart/form-data" method="POST">
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 content-center">
                             <div class="w-full px-3">
-                                <div class="w-12 rounded-full overflow-hidden">
-                                    <img src='https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60' alt="avatar">
-                                </div>
                                 <label class="form-control block tracking-wide font-bold mb-2" for="caption"></label>
                                 <input type="text" class="appearance-none block w-full py-3 px-4 mb-3 leading-tight rounded-md" id="caption" name="caption" placeholder="Enter your playdate info">
                                 <label class="form-control block tracking-wide font-bold mb-2" for="location"></label>

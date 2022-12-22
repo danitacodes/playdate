@@ -1,20 +1,20 @@
 <%- include("partials/head.ejs") %>
 
-<div class="min-h-screen py-40 bg-[#748DA6]">
+<div class="min-h-screen py-40 bg-[#735d78]">
   <div
-    class="shadow-lg bg-[#D3CEDF] w-3/6 m-auto p-4 after:block after:pb-[50%] items-center justify-center flex max-w-xl"
+    class="shadow-lg bg-[#ebdee5] w-3/6 m-auto p-4 after:block after:pb-[50%] items-center justify-center flex max-w-xl"
   >
     <div
       class="col-6 mt-5 flex flex-row flex-wrap justify-center text-center p-4"
     >
       <i class="fa-solid fa-children text-5xl"></i>
-      <sub class="text-4xl mb-16">Playdate Chronicles</sub>
+      <sub class="text-3xl md:text-4l mb-16">Playdate Chronicles</sub>
       <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-        <div class="alert alert-danger text-red-700"><%= el.msg %></div>
-        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-        messages.info.forEach( el => { %>
-        <div class="alert alert-info text-red-700"><%= el.msg %></div>
-        <% }) %> <% } %>
+      <div class="alert alert-danger text-red-700"><%= el.msg %></div>
+      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+      messages.info.forEach( el => { %>
+      <div class="alert alert-info text-red-700"><%= el.msg %></div>
+      <% }) %> <% } %>
       <form
         action="/login"
         method="POST"
@@ -49,7 +49,7 @@
         </div>
         <button
           type="submit"
-          class="px-4 p-3 uppercase border-2 border-[#333] rounded-md tracking-wider bg-[#748DA6] text-white"
+          class="px-4 p-3 uppercase border-2 border-[#333] rounded-md tracking-wider bg-[#735d78] text-[#ffffff]"
         >
           Log In
         </button>
@@ -64,18 +64,6 @@
       ></a>
     </div>
   </div>
-  <!-- <form action="/auth/login" method="post">
-        <h3 class="mb-4">Login</h3>
-        <div class="mb-3">
-            <label for="login-emai" class="form-label">Email address</label>
-            <input type="email" name="username" class="form-control" id="login-email" aria-describedby="emailHelp" required>
-        </div>
-        <div class="mb-3">
-            <label for="login-password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="login-password" required minlength="6">
-        </div>
-        <button type="submit" class="btn purple__btn">Submit</button>
-    </form> -->
 </div>
 
 <%- include("partials/footer.ejs") %>

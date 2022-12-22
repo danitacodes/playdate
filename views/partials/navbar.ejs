@@ -6,19 +6,47 @@
         <div class="flex justify-between items-center">
           <a href="/" class="flex items-center py-3 px-3">
             <i class="fa-solid fa-children text-4xl mr-1 text-[#ebdee5]"></i>
-        <sub class="text-[#ebdee5] text-3xl mb-4">Playdate Chronicles</sub>
+            <sub class="text-[#ebdee5] text-3xl mb-4">Playdate Chronicles</sub>
           </a>
-          <div class="px-4 cursor-pointer md:hidden">
-            <i class="fa-solid fa-bars text-4xl text-[#ebdee5]"></i>
+          <div class="md:px-4 cursor-pointer text-[#ebdee5] sm:hidden lg:hidden">
+            <a
+              href="/playfeed"
+              class="py-1 px-2 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+              >Playfeed</a
+            >
+            <a
+              href="/friends"
+              class="py-1 px-2 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+              >Friends</a
+            >
+            <a
+              href="/logout"
+              class="py-1 px-2 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+              >Logout</a
+            >
           </div>
         </div>
-        
-      <div class="hidden md:flex items-center text-[#ebdee5] space-x-1 text-lg">
-        <a href="/playfeed" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Playfeed</a>
-        <a href="/friends" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Friends</a>
-        <a href="/logout" class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md" >Logout</a>
-      </div>
 
+        <div
+          class="hidden md:flex items-center text-[#ebdee5] space-x-1 text-lg"
+        >
+          <a
+            href="/playfeed"
+            class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+            >Playfeed</a
+          >
+          <a
+            href="/friends"
+            class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+            >Friends</a
+          >
+          <a
+            href="/logout"
+            class="py-5 px-3 hover:bg-[#C15454] hover:py-3 hover:rounded-md"
+            >Logout</a
+          >
+        </div>
       </div>
     </div>
   </nav>
+</body>
