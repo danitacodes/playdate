@@ -18,7 +18,7 @@
             </div>
             <!--Avatar-->
             <div class="absolute top-16 left-2">
-              <div class="w-24 md:w-36 w-24 rounded-full overflow-hidden">
+              <div class="w-24 md:w-36 rounded-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60"
                   alt="avatar"
@@ -71,12 +71,13 @@
                 </div>
             </div>
 
-            <!--Feed-->
+            <!--Profile Feed-->
             <div class="mt-5 w-full mx-auto">
-                <ul class="flex w-full flex-col my-10 lg:grid lg:grid-cols-3 lg:gap-4">
+                <ul class="flex w-full flex-row gap-4 my-10 lg:grid lg:grid-cols-3 lg:gap-4">
                     <% for(var i=0; i<posts.length; i++) {%>
-                    <li class="my-3">
+                    <li class="my-3 flex">
                         <a href="/post/<%= posts[i]._id%>">
+                          <img class="img-fluid" src="<%= posts[i].image %>" alt="your picture">
                         </a>
                     </li>
                    <% } %>
