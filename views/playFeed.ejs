@@ -9,9 +9,9 @@
                 <% for(var i=0; i<posts.length; i++) {%>
                 <li class="my-10">
                     <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
-                        <a href="/post/<%= posts[i]._id %>">
+                        <a href="/posts/user<%= posts[i]._id %>">
                             <p>
-                                <a class="font-semibold hover:underline cursor-pointer text-[333] text-lg" href="userProfile/<%= posts[i].user._id %>"><%= posts[i]. %></a> shared a <a class="text-[#005458] font-semibold" href="">playdate</a>
+                                <a class="font-semibold hover:underline cursor-pointer text-[333] text-lg" href="/<%= posts[i]._id %> "><%= posts[i].user %></a> shared a <a class="text-[#005458] font-semibold" href="">playdate</a>
                             </p>
                             <div class="">
                                 <p class="my-3 text-lg">

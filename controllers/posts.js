@@ -13,7 +13,7 @@ module.exports = {
     },
     getFeed: async (req, res) => {
       try {
-        const posts = await Post.find().populate({ path:'user', select:'username' });
+        const posts = await Post.find().populate('user', 'username');
         res.render("playfeed.ejs", { posts: posts });
       } catch (err) {
         console.log(err);
@@ -75,12 +75,6 @@ module.exports = {
       } catch (err) {
         res.redirect("/profile");
       }
-    },  
-    getPosts: async (req, res) => {
-      try {
-        const posts = await Post.find().then(posts=> {res.json({posts})})
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    },
+    
   };
