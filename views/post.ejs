@@ -1,97 +1,68 @@
-<%- include("partials/head.ejs") %> 
-<%- include("partials/navbar.ejs") %>
+<%- include("partials/head.ejs") %>
 
-<div class="container min-w-full">
-  <div
-    class="md:max-w-6xl xl:w-3/5 lg:w-11/12 sm:mx-auto md-grid md-grid-cols-2 md:block py-6 flex flex-col items-center gap-4 w-3/4 mx-auto md:items-start md:mt-5"
-  >
-    <div class="">
-      <h2 class="text-xl uppercase tracking-wider text-[#163530] font-bold">
-        <%= post.title %>
-      </h2>
-      <img class="img-fluid mb-5" src="<%= post.image%>" alt="" />
-      <div
-        class="w-full flex flex-col text-center m-auto bg-zinc-200 capitalize tracking-wider"
-      >
-        <div class="flex flex-row justify-around border-b-4-[#E9F1Ef] w-full">
-              <span class="form-label p-2 border shrink basis-24 border-white"
-            >Friends</span
-          >
-          <span class="form-label p-2 border shrink basis-24 border-white"
-            >Grownups</span
-          >
-          <span class="form-label p-2 border shrink basis-24 border-white"
-            >Location</span
-          >
-        </div>
-        <div class="flex flex-row justify-around">
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].friends %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].grownups %></span>
-            <span class="form-label p-2 border shrink basis-24 border-white"><%= post[i].location %></span>
+<div>
+  <body class="bg-[#735d78]">
+    <%- include("partials/navbar.ejs") %>
+    <div class="container min-w-full mt-8 p-4">
+      <div class="mt-5 mx-auto">
+        <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5 items-center">
+          <div class="md:gap-2 md:flex md:flex-row">
+            <img src="<%= post.image%>" alt="" />
+
+            <div class="">
+              <p class="my-3 text-lg text-[#333] font-semibold">
+                <%= post.caption%>
+              </p>
+
+              <table class="w-full text-sm text-left">
+                <thead class="text-sm">
+                  <tr class="text-[#005458]">
+                    <th scope="col" class="px-2">Location</th>
+                    <th scope="col" class="px-2">Friends</th>
+                    <th scope="col" class="px-2">Other Grownups</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="px-2"><%= post.location %></td>
+                    <td class="px-2"><%= post.friends %></td>
+                    <td class="px-2"><%= post.grownups %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div>
+                <div class="flex mt-3 p-2 gap-16">
+                    <form action="/post/likePost/<%= post._id%>?_method=PUT" method="POST" class="inline">
+                        <button type="submit">
+                            <i class="fa-regular fa-heart">  <%= post.likes %></i> 
+                        </button>
+                    </form>                             
+                </div>
+            </div>
+              <div class="mt-5 flex">
+                <form action="/comment/createComment/<%= post._id%>" method="POST">
+                  <input type="text" id="comment" name="comment" class="p-1 rounded-md">
+                  <button class="bg-[#735d78] text-[#ebdee5] px-2 md:px-4 p-1 md:p-2 self-center tracking-wider rounded-md" type="submit">Post</button>
+                </form>
+              </div>
+              
+              <div class="mt-4 flex flex-wrap p-2">
+                <ul>
+                    <% for(var j=0; j<comments.length; j++) {%>
+                    <li>
+                        <span><%= comments[j].user.userName %></span>
+                        <span><%= comments[j].comment %></span>
+                        <span><%= comments[j].createdAt.toLocaleString([], { hour: "2-digit", minute: "2-digit" }) %></span>
+                    </li>
+                    <% } %>
+                </ul>
+             </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="md:flex-col md:flex md:justify-between">
-        <div class="my-6">
-            <div class="flex flex-row justify-between">
-                <a href="/profile/<%= post.user._id%>">
-                    <span class="text-[#60DBCC] tracking-wider font-semibold mb-3"><%= post.user.username %></span>
-                </a>
-                <span class="">
-                    <% if(post.user.id === user) { %>
-                        <form
-                            action="/post/deletePost/<%= post._id%>?_method=DELETE"
-                            method="POST"
-                            class="inline"
-                        >
-                            <button class="" type="submit">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                    </form>
-                    <% } %>
-                </span>
-            </div>
-
-            <p><%= post.caption %></p>
-        </div>
-
-        <div class="justify-self-end">
-            <ul class="block list-unstyled my-3">
-                <% for(var i=0; i<comments.length; i++) {%>
-                    <li class="block my-3">
-                        <span class="tracking-wider font-bold"><%= comments[i].user.username%></span>
-                        <span><%= comments[i].comment%></span>
-                        <span class="tracking-wider text-gray-400 block text-right text-sm pt-1"><%= comments[i].createdAt.toLocaleString("en-US") %></span>
-                    </li>    
-               <% } %>
-            </ul>
-            <div class="block mt-5">
-                <p class="">
-                    <form 
-                        method="POST"
-                        action="/post/likepost/<%= post._id%>?_method=PUT"
-                        class="inline"
-                        >
-                        <button class="" type="submit">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                    </form>
-
-                    <%= post.likes %>
-                </p>
-            </div>
-            <form action="/comment/createComment/<%=post._id%>"
-                method="POST">
-                <div class="mb-6">
-                    <div class="grid grid-cols-5 gap-2 mt-2">
-                        <input type="text" class="col-span-4 bg-transparent form-control block w-full mx-auto text-center border-[#60DBCC] border-2" id="comment" name="comment" >
-                        <button type="submit" class="px-1 uppercase border-2 border-[#163530] rounded-md tracking-wider bg-[#163530] text-white">POST</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-  </div>
+  </body>
 </div>
 
 <%- include('partials/footer.ejs') %>

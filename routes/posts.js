@@ -14,8 +14,5 @@ router.put('/likePost/:id', postsController.likePost)
 
 router.delete('/deletePost/:id', postsController.deletePost)
 
-router.get('/', ensureAuth, postsController.getFeed)
-router.get("/profile", ensureAuth, postsController.getProfile);
-router.get("/playfeed", ensureAuth, postsController.getFeed);
 
 module.exports = router

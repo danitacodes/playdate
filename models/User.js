@@ -4,20 +4,9 @@ const mongoose = require("mongoose");
 
 //User Schema
 const UserSchema = new mongoose.Schema({
-  username: { type: String, unique: true, required: true },
+  userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  profilePic: { type: String, default: "" },
-  coverPic: { type: String, default: "" },
-  followers: { type: Array, default: [] },
-  following: { type: Array, default: [] },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-  city:{
-    type:String, max:50
-  }
 });
 
 UserSchema.pre("save", function save(next) {

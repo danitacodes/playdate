@@ -12,6 +12,7 @@ const connectDB = require('./config/database')
 //require routes
 const mainRoutes = require('./routes/main')
 const postRoutes = require('./routes/posts')
+const commentRoute = require('./routes/comments')
 
 //application setup
 const app = express();
@@ -64,6 +65,7 @@ app.use(flash())
 
 app.use('/', mainRoutes)
 app.use('/post', postRoutes)
+app.use('/comment', commentRoute)
 
 
 

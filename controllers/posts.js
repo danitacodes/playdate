@@ -1,5 +1,6 @@
 const cloudinary = require('../middleware/cloudinary')
 const Post = require('../models/Post')
+const Comment = require('../models/Comment')
 
 
 module.exports = {
@@ -14,7 +15,17 @@ module.exports = {
     getFeed: async (req, res) => {
       try {
         const posts = await Post.find().populate('user', 'username');
-        res.render("playfeed.ejs", { posts: posts });
+        const comments = await Comment.find({posts: req.params.id}).sort({ createdAt: "asc"}).populate('user').lean()
+        res.render("playfeed.ejs", { posts: posts, user: req.user.id, comments:comments, userName: req.user.userName });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    getUserProfile: async (req, res) => {
+      try {
+        const user = await User.findById(req.params.id);
+        const posts = await Post.find({ user: req.params.id });
+        res.render("profile.ejs", { posts: posts, publicUser: user, user: req.user});
       } catch (err) {
         console.log(err);
       }
@@ -22,7 +33,8 @@ module.exports = {
     getPost: async (req, res) => {
       try {
         const post = await Post.findById(req.params.id);
-        res.render("post.ejs", { post: post, user: req.user });
+        const comments = await Comment.find({post: req.params.id}).sort({createdAt: "asc"}).populate('user').lean()
+        res.render("post.ejs", { post: post, user: req.user.id, comments: comments, userName: req.user.userName });
       } catch (err) {
         console.log(err);
       }

@@ -9,15 +9,11 @@
                 <% for(var i=0; i<posts.length; i++) {%>
                 <li class="my-10">
                     <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
-                        <a href="/posts/user<%= posts[i]._id %>">
-                            <p>
-                                <a class="font-semibold hover:underline cursor-pointer text-[333] text-lg" href="/<%= posts[i]._id %> "><%= posts[i].user %></a> shared a <a class="text-[#005458] font-semibold" href="">playdate</a>
-                            </p>
+                        <a href="/post/<%= posts[i]._id %>">
                             <div class="">
                                 <p class="my-3 text-lg">
                                     <%= posts[i].caption %>
                                 </p>
-
                                 <div class="rounded-md overflow-hidden">
                                     <img class="img-fluid" src="<%= posts[i].image %>" alt="user picture">
                                 </div>
@@ -32,7 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr class="text-[#333] font-semibold">
                                             <td class="px-2"><%= posts[i].location %></td>
                                             <td class="px-2"><%= posts[i].friends %></td>
                                             <td class="px-2"><%= posts[i].grownups %></td>
@@ -40,26 +36,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="flex mt-3 p-2 gap-16">
-                                <form action="/post/likePost/<%= posts[i]._id %>?_method=PUT">
-                                    <button>
-                                        <i class="fa-regular fa-heart"></i>
-                                        <%= posts[i].likes %>
-                                    </button>
-                                </form>
-                                <div>
-                                    <i class="fa-regular fa-message"></i>
-                                </div>
+                            <div class="mt-4 mr-4 p-2">
+                                <i class="fa-regular fa-heart">
+                                <span>
+                                    <%= posts[i].likes %>
+                                </span> 
+                                </i>
                             </div>
-                            <form method="POST" action="/comment/createComment/<%= posts[i]._id%>">
-                                <div class="mb-6">
-                                    <div class="grid grid-cols-5 gap-2 mt-2">
-                                        <input type="text" class="col-span-4 form-control block w-full mx-auto grow text-center rounded-md h-12">
-                                        <button class="bg-[#735d78] text-[#ebdee5] rounded-md">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </a>
+                        </a>                     
+        
+                        
                     </div>
                 </li>
          <%   } %>
