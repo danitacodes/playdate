@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
   content: ['./views/*.{html,ejs,js,jpg', './views/partials/*.{html,ejs,js,jpg}'],
   theme: {
     colors: {
