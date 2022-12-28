@@ -27,7 +27,7 @@ connectDB();
 require('./config/passport')(passport)
 
 //EJS views, body-parser, express-static
-app.set('views', './views')
+app.set('views', '/views')
 app.set('view engine', 'ejs')
 app.use(express.static("public"))
 
