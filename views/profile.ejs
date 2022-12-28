@@ -3,43 +3,18 @@
 
 <div>
   <body class="bg-[#735d78]">
-    <%- include('partials/navbar.ejs') %>
-      <!--Right Side-->
-
-      <div class="p-4">
-        <!-- Cover Photo -->
-        <div class="bg-[#ebdee5] shadow-md rounded-md mb-5 overflow-hidden">
-          <div class="relative">
-            <div class="md:h-40 h-36 overflow-hidden md:overflow-hidden flex justify-center md:justify-center items-center md:items-center">
-              <img
-                src="https://images.unsplash.com/photo-1471922694854-ff1b63b20054?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhY2h8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60"
-                alt="beach photo"
-              />
-            </div>
-            <!--Avatar-->
-            <div class="absolute md:top-12 md:left-4 top-8 left-2">
-              <div class="md:w-36 w-32 rounded-full overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1623852881187-a3790f3b29ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmxhY2slMjB3b21hbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=600&q=60"
-                  alt="avatar"
-                />
-              </div>
-            </div>
-            <div class="p-4 pb-4">
-              <div class="ml-24 md:ml-40">
-                <h1 class="text-3xl font-bold"><%= user.username %></h1>
-                <div class="text-[#005458] font-bold leading-4">
-                  Burbank, CA
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <%- include('partials/navbar.ejs') %>     
+  
 
         <!--Create Posts-->
-        <div class="">
+        <div class="p-8">
+          
             <!-- New PlayDate Post-->
-            <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5">
+            <div class="bg-[#ebdee5] shadow-md rounded-md p-4 mb-5 lg:mx-24">
+              <div class="text-center mb-7">
+                <h1 class="lg:text-3xl text-xl font-bold mb-4">Welcome Back <%= user.userName %></h1>
+                <p class="text-lg text-[#005458] font-semibold">Let's record your playdate</p>
+              </div>
                 <div class="flex flex-col justify-center items-center">
                     <form class="w-full max-w-lg" action="/post/createPost" enctype="multipart/form-data" method="POST">
                         <div class="flex flex-wrap gap-2 content-center">
@@ -72,8 +47,8 @@
             </div>
 
             <!--Profile Feed-->
-            <div class="mt-5 w-full mx-auto">
-                <ul class="flex w-full flex-row gap-4 my-10 grid grid-cols-2 md:grid md:grid-cols-4">
+            <div class="mt-5 w-full mx-auto lg:mx-24">
+                <ul class="w-full flex-row gap-4 my-10 grid grid-cols-2 md:grid md:grid-cols-4">
                     <% for(var i=0; i<posts.length; i++) {%>
                     <li class="my-3 flex">
                         <a href="/post/<%= posts[i]._id%>">
@@ -84,7 +59,6 @@
                 </ul>
             </div>
         </div>
-      </div>
     </div>
   </body>
 </div>

@@ -10,6 +10,7 @@ module.exports = {
         user: req.user.id
       });
       console.log("Comment has been added!");
+      console.log(req.user.id)
       res.redirect("/post/" + req.params.id);
     } catch (err) {
       console.log(err);

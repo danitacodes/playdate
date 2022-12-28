@@ -7,6 +7,8 @@ const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
+  avatar: { type: String, default: "No Photo" },
+  coverPhoto: { type: String, default: "No Photo"},
 });
 
 UserSchema.pre("save", function save(next) {
