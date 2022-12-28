@@ -9,7 +9,7 @@ module.exports = {
       try {
         const user= await User.findById(req.params.id)
         const posts = await Post.find({ user: req.user.id });
-        res.render("profile.ejs", { posts: posts, user: req.user});
+        res.render("profile", { posts: posts, user: req.user});
       } catch (err) {
         console.log(err);
       }
@@ -19,7 +19,7 @@ module.exports = {
         const posts = await Post.find().populate('user', 'username');
         const comments = await Comment.find({posts: req.params.id}).sort({ createdAt: "asc"}).populate('user').lean()
         console.log(req.user.id)
-        res.render("playfeed.ejs", { posts: posts, user: req.user.id, comments:comments, userName: req.user.userName });
+        res.render("playfeed", { posts: posts, user: req.user.id, comments:comments, userName: req.user.userName });
       } catch (err) {
         console.log(err);
       }
@@ -28,7 +28,7 @@ module.exports = {
       try {
         const user = await User.findById(req.params.id);
         const posts = await Post.find({ user: req.params.id });
-        res.render("profile.ejs", { posts: posts, user: req.user});
+        res.render("profile", { posts: posts, user: req.user});
       } catch (err) {
         console.log(err);
       }
@@ -37,7 +37,7 @@ module.exports = {
       try {
         const post = await Post.findById(req.params.id);
         const comments = await Comment.find({post: req.params.id}).sort({createdAt: "asc"}).populate('user').lean()
-        res.render("post.ejs", { post: post, user: req.user, comments: comments, userName: req.user.userName });
+        res.render("post", { post: post, user: req.user, comments: comments, userName: req.user.userName });
       } catch (err) {
         console.log(err);
       }
