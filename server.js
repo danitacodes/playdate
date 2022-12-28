@@ -7,6 +7,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('express-flash')
 const logger = require('morgan')
+const path = require('path')
 const connectDB = require('./config/database')
 
 //require routes
@@ -29,6 +30,7 @@ require('./config/passport')(passport)
 //EJS views, body-parser, express-static
 
 app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, '/views'))
 app.use(express.static("public"))
 
 app.use(express.urlencoded({ extended: true }))
