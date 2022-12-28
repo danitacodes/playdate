@@ -19,7 +19,7 @@ module.exports = {
         const posts = await Post.find().populate('user', 'username');
         const comments = await Comment.find({posts: req.params.id}).sort({ createdAt: "asc"}).populate('user').lean()
         console.log(req.user.id)
-        res.render("/views/playfeed", { posts: posts, user: req.user.id, comments:comments, userName: req.user.userName });
+        res.render("/playfeed", { posts: posts, user: req.user.id, comments:comments, userName: req.user.userName });
       } catch (err) {
         console.log(err);
       }
